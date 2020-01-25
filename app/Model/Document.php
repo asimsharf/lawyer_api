@@ -9,6 +9,6 @@ class Document extends Model
 {
     public function documents_type()
     {
-    	return $this->hasMany(DocumentType::class);
+    	return $this->belongsTo(DocumentType::class);
     }
 }
