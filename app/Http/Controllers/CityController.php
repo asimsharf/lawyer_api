@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\City;
+use App\Model\Countery;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\CityResource;
 class CityController extends Controller
 {
     /**
@@ -12,9 +13,9 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Countery $countery)
     {
-        //
+        return CityResource::collection( $countery->cities);
     }
 
     /**

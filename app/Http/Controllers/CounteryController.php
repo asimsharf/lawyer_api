@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Countery;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\Countery\CounteryResource;
+use App\Http\Resources\Countery\CounteryCollection;
 class CounteryController extends Controller
 {
     /**
@@ -14,7 +15,7 @@ class CounteryController extends Controller
      */
     public function index()
     {
-        //
+        return CounteryCollection::collection(Countery::paginate(10));
     }
 
     /**
@@ -46,7 +47,7 @@ class CounteryController extends Controller
      */
     public function show(Countery $countery)
     {
-        //
+        return new CounteryResource($countery);
     }
 
     /**
