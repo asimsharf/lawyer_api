@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Model\Document;
+use App\Model\DocumentType;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\DocumentResource;
 class DocumentController extends Controller
 {
     /**
@@ -12,9 +13,9 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(DocumentType $documentType)
     {
-        //
+        return DocumentResource::collection($documentType->documents);
     }
 
     /**

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\DocumentType;
+use App\Model\Lawyer;
 use Illuminate\Http\Request;
-use App\Http\Resources\DocumentType\DocumentTypeResource;
-use App\Http\Resources\DocumentType\DocumentTypeCollection;
-class DocumentTypeController extends Controller
+use App\Http\Resources\Lawyer\LawyerResource;
+use App\Http\Resources\Lawyer\LawyerCollection;
+class LawyerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class DocumentTypeController extends Controller
      */
     public function index()
     {
-        return DocumentTypeCollection::collection(DocumentType::paginate(10));
+        return LawyerCollection::collection(Lawyer::paginate(10));
     }
 
     /**
@@ -42,21 +42,21 @@ class DocumentTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\DocumentType  $documentType
+     * @param  \App\Model\Lawyer  $lawyer
      * @return \Illuminate\Http\Response
      */
-    public function show(DocumentType $documentType)
+    public function show(Lawyer $lawyer)
     {
-        return new DocumentTypeResource($documentType);
+        return new LawyerResource($lawyer);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\DocumentType  $documentType
+     * @param  \App\Model\Lawyer  $lawyer
      * @return \Illuminate\Http\Response
      */
-    public function edit(DocumentType $documentType)
+    public function edit(Lawyer $lawyer)
     {
         //
     }
@@ -65,10 +65,10 @@ class DocumentTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\DocumentType  $documentType
+     * @param  \App\Model\Lawyer  $lawyer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DocumentType $documentType)
+    public function update(Request $request, Lawyer $lawyer)
     {
         //
     }
@@ -76,10 +76,10 @@ class DocumentTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\DocumentType  $documentType
+     * @param  \App\Model\Lawyer  $lawyer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DocumentType $documentType)
+    public function destroy(Lawyer $lawyer)
     {
         //
     }

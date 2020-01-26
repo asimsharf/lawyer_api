@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Countery;
+namespace App\Http\Resources\DocumentType;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CounteryResource extends JsonResource
+class DocumentTypeResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -20,7 +20,7 @@ class CounteryResource extends JsonResource
             'created_at'=> $this->created_at,
             'updated_at'=> $this->updated_at,
             'href' => [
-                'cities' => route('cities.index', $this->id)
+                'documentTypes' => route('documents.index', $this->id)
             ]
         ];
     }

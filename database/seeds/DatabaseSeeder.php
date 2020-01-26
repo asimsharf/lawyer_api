@@ -16,6 +16,6 @@ class DatabaseSeeder extends Seeder
         factory(App\Model\City::class, 200)->create();
         factory(App\Model\DocumentType::class, 20)->create();
         factory(App\Model\Document::class, 200)->create();
-        // factory(App\Model\Lawyer::class, 50)->create();
+        factory(App\Model\Lawyer::class, 50)->create();
     }
 }

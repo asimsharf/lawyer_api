@@ -18,9 +18,12 @@ Route::group(['prefix'=>'counteries'], function(){
     Route::apiResource('/{countery}/cities', 'CityController');
 });
 
-// Route::apiResource('/Document', 'DocumentController');
-// Route::apiResource('/DocumentType', 'DocumentTypeController');
-// Route::apiResource('/Lawyer','LawyerController');
+Route::apiResource('/documentTypes', 'DocumentTypeController');
+Route::group(['prefix'=>'documentTypes'], function(){
+    Route::apiResource('/{documentType}/documents', 'DocumentController');
+});
+
+Route::apiResource('/lawyers','LawyerController');
 
 
 
