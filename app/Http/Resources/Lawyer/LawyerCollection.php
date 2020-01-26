@@ -14,6 +14,7 @@ class LawyerCollection extends Resource
      */
     public function toArray($request)
     {
+
         return [
             'id'=> $this->id,
             'name'=> $this->name,
@@ -22,14 +23,14 @@ class LawyerCollection extends Resource
             'phone'=> $this->phone,
             'remember_token'=> $this->remember_token,
             'office_name'=> $this->office_name,
-            'gender'=>$this->gender,
+            'gender'=> $this->gender,
             'profile_image'=> $this->profile_image,
             'background_imge'=> $this->background_imge,
             'address_text'=> $this->address_text,
             'latitude'=> $this->latitude,
             'longitude'=> $this->longitude,
-            'city_id'=> $this->city_id,
-            'document_id'=> $this->document_id,
+            'city' => $this->city,
+            'document'=> $this->document,
             'created_at'=> $this->created_at,
             'updated_at'=> $this->updated_at,
             'href' => [

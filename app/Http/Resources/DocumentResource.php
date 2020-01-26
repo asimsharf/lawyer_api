@@ -17,7 +17,7 @@ class DocumentResource extends JsonResource
         return [
             'id' => $this->id,
             'document_path' => $this->document_path,
-            'document_type_id' => $this->document_type_id,
+            'document_type' => $this->document_type,
             'created_at' => $this->created_at,
             'updated_at' =>$this->updated_at
         ];

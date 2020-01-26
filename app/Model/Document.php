@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
-    public function documents_type()
+    public function document_type()
     {
     	return $this->belongsTo(DocumentType::class);
     }
-    public function lawyers()
+    public function lawyer()
     {
     	return $this->belongsTo(Lawyer::class);
     }

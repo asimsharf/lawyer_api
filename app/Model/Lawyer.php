@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lawyer extends Model
 {
-    public function cities()
+    public function city()
     {
     	return $this->belongsTo(City::class);
     }
 
-    public function documents()
+    public function document()
     {
     	return $this->belongsTo(Document::class);
     }

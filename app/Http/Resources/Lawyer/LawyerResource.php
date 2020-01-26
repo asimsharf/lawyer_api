@@ -27,9 +27,8 @@ class LawyerResource extends JsonResource
             'background_imge'=> $this->background_imge,
             'address_text'=> $this->address_text,
             'latitude'=> $this->latitude,
-            'longitude'=> $this->longitude,
-            'city_id'=> $this->city_id,
-            'document_id'=> $this->document_id,
+            'city' => $this->city,
+            'document'=> $this->document,
             'created_at'=> $this->created_at,
             'updated_at'=> $this->updated_at
         ];

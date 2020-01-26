@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    public function counteries()
+    public function countery()
     {
     	return $this->belongsTo(Countery::class);
     }
