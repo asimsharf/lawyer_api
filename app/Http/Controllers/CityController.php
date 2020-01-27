@@ -36,7 +36,17 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $city = new City();
+            $city->name = $request->name;
+            $city->countery_id = $request->countery_id;
+            $saveCity = $city->save();
+            if($saveCity){
+                return response(["City"=>$city ], 201)->header('Content-Type', 'Application/json');
+            }
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
