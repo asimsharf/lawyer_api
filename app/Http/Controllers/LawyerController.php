@@ -37,17 +37,17 @@ class LawyerController extends Controller
      */
     public function store(Request $request)
     {
-
+        
 
         try{
              $doc= new Document();
              $doc->document_path=$request->document_path;
              $doc->document_type_id= $request->document_type_id;
-             $doc->save();
-             $lay = new Lawyer();
+             $save2 = $doc->save();
+             $law = new Lawyer();
              $law->name = $request->name;
              $law->email = $request->email;
-             $law->password = $request->password;
+             $law->password = md5($request->password);
              $law->phone = $request->phone;
              $law->remember_token = $request->remember_token;
              $law->office_name = $request->office_name;
@@ -59,9 +59,17 @@ class LawyerController extends Controller
              $law->longitude = $request->longitude;
              $law->city_id = $request->city_id;
              $law->document_id = $doc->id;
-             $law->save();
+             $save= $law->save();
+            if($save &&  $save2){
 
-             
+                
+    return response(["lawyer"=>$law ], 201)
+    ->header('Content-Type', 'Application/json');
+                // return  response($pathToFile, $name, $headers);["code"=>1,"msg"=>"success","lawyer"=>$law,
+
+                // ]);
+            }
+
         } catch(\Exception $e){
             return $e->getMessage();
         }
