@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lawyer extends Model
 {
+    protected $guarded=[];
     public function city()
     {
     	return $this->belongsTo(City::class);

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
+    protected $guarded=[];
     public function countery()
     {
     	return $this->belongsTo(Countery::class);

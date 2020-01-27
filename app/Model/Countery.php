@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Countery extends Model
 {
+    protected $guarded=[];
     public function cities()
     {
     	return $this->hasMany(City::class);

@@ -8,12 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
+    protected $guarded=[];
     public function document_type()
     {
     	return $this->belongsTo(DocumentType::class);
     }
     public function lawyer()
     {
-    	return $this->belongsTo(Lawyer::class);
+    	return $this->hasOne(Lawyer::class);
     }
 }

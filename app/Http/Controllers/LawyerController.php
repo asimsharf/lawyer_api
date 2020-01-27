@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Lawyer;
+use App\Model\Document;
 use Illuminate\Http\Request;
 use App\Http\Resources\Lawyer\LawyerResource;
 use App\Http\Resources\Lawyer\LawyerCollection;
@@ -36,7 +37,36 @@ class LawyerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        try{
+             $doc= new Document();
+             $doc->document_path=$request->document_path;
+             $doc->document_type_id= $request->document_type_id;
+             $doc->save();
+             $lay = new Lawyer();
+             $law->name = $request->name;
+             $law->email = $request->email;
+             $law->password = $request->password;
+             $law->phone = $request->phone;
+             $law->remember_token = $request->remember_token;
+             $law->office_name = $request->office_name;
+             $law->gender = $request->gender;
+             $law->profile_image = $request->profile_image;
+             $law->background_imge = $request->background_imge;
+             $law->address_text = $request->address_text;
+             $law->latitude = $request->latitude;
+             $law->longitude = $request->longitude;
+             $law->city_id = $request->city_id;
+             $law->document_id = $doc->id;
+             $law->save();
+
+             
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
+       
+
     }
 
     /**
