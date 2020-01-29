@@ -4,9 +4,11 @@ namespace App\Model;
 use App\Model\City;
 use App\Model\Document;
 use Illuminate\Database\Eloquent\Model;
-
-class Lawyer extends Model
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+class Lawyer extends Model implements HasMedia
 {
+    use HasMediaTrait;
     protected $guarded=[];
     public function city()
     {

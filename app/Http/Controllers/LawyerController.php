@@ -42,8 +42,8 @@ class LawyerController extends Controller
             $doc->document_path=$request->document_path;
             $doc->document_type_id= $request->document_type_id;
             $saveDocument = $doc->save();
-            $law = new Lawyer();
 
+            $law = new Lawyer();
             $law->name = $request->name;
             $law->email = $request->email;
             $law->password = md5($request->password);
@@ -53,6 +53,8 @@ class LawyerController extends Controller
             $law->gender = $request->gender;
             $law->profile_image = $request->profile_image;
             $law->background_imge = $request->background_imge;
+            // $law->addMedia($request->file('profile_image'))->toMediaCollection('LawyerCollection');
+            // $law->addMedia($request->file('background_imge'))->toMediaCollection('LawyerCollection');
             $law->address_text = $request->address_text;
             $law->latitude = $request->latitude;
             $law->longitude = $request->longitude;
