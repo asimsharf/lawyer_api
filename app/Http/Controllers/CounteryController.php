@@ -36,7 +36,18 @@ class CounteryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $countery = new Countery();
+            $countery->name = $request->name;
+            $saveCountery = $countery->save();
+            if($saveCountery){
+                return response([
+                    "Countery"=>new CounteryResource($countery)
+                ], 201)->header('Content-Type', 'Application/json');
+            }
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**

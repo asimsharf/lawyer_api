@@ -36,7 +36,16 @@ class DocumentTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $documentType = new DocumentType();
+            $documentType->name = $request->name;
+            $saveDocumentType = $documentType->save();
+            if($saveDocumentType){
+                return response(["DocumentType"=>$documentType ], 201)->header('Content-Type', 'Application/json');
+            }
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**

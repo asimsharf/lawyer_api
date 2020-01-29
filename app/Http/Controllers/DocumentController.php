@@ -36,7 +36,17 @@ class DocumentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $document = new Document();
+            $document->document_path = $request->document_path;
+            $document->document_type_id = $request->document_type_id;
+            $saveDocument = $document->save();
+            if($saveDocument){
+                return response(["Document"=>$document ], 201)->header('Content-Type', 'Application/json');
+            }
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
