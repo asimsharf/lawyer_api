@@ -104,7 +104,6 @@ class LawyerController extends Controller
     public function update(Request $request, Lawyer $lawyer)
     {
         try{
-
             $update= $lawyer->update($request->all());
             if( $update)
             return response(["lawyer"=> $lawyer ], 201)
@@ -113,7 +112,7 @@ class LawyerController extends Controller
         } catch(\Exception $e){
             return $e->getMessage();
         }
-        
+
     }
 
     /**
@@ -134,6 +133,6 @@ class LawyerController extends Controller
         } catch(\Exception $e){
             return $e->getMessage();
         }
-        
+
     }
 }
