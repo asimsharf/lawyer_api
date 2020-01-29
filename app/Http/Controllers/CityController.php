@@ -80,7 +80,14 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        //
+        try{
+            $update= $city->update($request->all());
+            if( $update){
+                return response(["city"=> $city ], 201)->header('Content-Type', 'Application/json');
+            }
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -91,6 +98,13 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        try{
+            $delete= $city->delete();
+            if( $delete){
+                return response(["city"=> $city ], 201)->header('Content-Type', 'Application/json');
+            }
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 }

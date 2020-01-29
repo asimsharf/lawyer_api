@@ -81,7 +81,14 @@ class CounteryController extends Controller
      */
     public function update(Request $request, Countery $countery)
     {
-        //
+        try{
+            $update= $countery->update($request->all());
+            if( $update){
+                return response(["countery"=> $countery ], 201)->header('Content-Type', 'Application/json');
+            }
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -92,6 +99,13 @@ class CounteryController extends Controller
      */
     public function destroy(Countery $countery)
     {
-        //
+        try{
+            $delete= $countery->delete();
+            if( $delete){
+                return response(["countery"=> $countery ], 201)->header('Content-Type', 'Application/json');
+            }
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 }

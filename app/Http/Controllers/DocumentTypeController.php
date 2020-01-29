@@ -79,7 +79,14 @@ class DocumentTypeController extends Controller
      */
     public function update(Request $request, DocumentType $documentType)
     {
-        //
+        try{
+            $update= $lawyer->update($request->all());
+            if( $update){
+                return response(["documentType"=> $documentType ], 201)->header('Content-Type', 'Application/json');
+            }
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -90,6 +97,13 @@ class DocumentTypeController extends Controller
      */
     public function destroy(DocumentType $documentType)
     {
-        //
+        try{
+            $delete= $documentType->delete();
+            if( $delete){
+                return response(["documentType"=> $documentType ], 201)->header('Content-Type', 'Application/json');
+            }
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 }

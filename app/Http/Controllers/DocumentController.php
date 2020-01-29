@@ -80,7 +80,14 @@ class DocumentController extends Controller
      */
     public function update(Request $request, Document $document)
     {
-        //
+        try{
+            $update= $document->update($request->all());
+            if( $update){
+                return response(["document"=> $document ], 201)->header('Content-Type', 'Application/json');
+            }
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     /**
@@ -91,6 +98,13 @@ class DocumentController extends Controller
      */
     public function destroy(Document $document)
     {
-        //
+        try{
+            $delete= $document->delete();
+            if( $delete){
+                return response(["document"=> $document ], 201)->header('Content-Type', 'Application/json');
+            }
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 }
