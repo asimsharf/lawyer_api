@@ -108,7 +108,17 @@ class LawyerController extends Controller
      */
     public function update(Request $request, Lawyer $lawyer)
     {
-        //
+        try{
+
+            $update= $lawyer->update($request->all());
+            if( $update)
+            return response(["lawyer"=> $lawyer ], 201)
+            ->header('Content-Type', 'Application/json');
+
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
+        
     }
 
     /**
@@ -119,6 +129,16 @@ class LawyerController extends Controller
      */
     public function destroy(Lawyer $lawyer)
     {
-        //
+        try{
+
+            $delete= $lawyer->delete();
+            if( $delete)
+                return response(["lawyer"=> $lawyer ], 201)
+                ->header('Content-Type', 'Application/json');
+
+        } catch(\Exception $e){
+            return $e->getMessage();
+        }
+        
     }
 }
