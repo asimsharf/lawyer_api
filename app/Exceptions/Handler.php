@@ -50,6 +50,20 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof NotFoundHttpException) {
+            return response()->json(['error' => trans('error.page.not_found')], 404);
+         }
+        if ($exception instanceof UnauthorizedException) {
+            return response()->json(['error' => $exception->getMessage()], 403);
+        }
+        if ($exception instanceof AuthenticationException) {
+            return response()->json(['error' => $exception->getMessage()], 401);
+        }
+
+        if ($exception instanceof \PDOException) {
+            return response()->json(['error' => trans('error.page.not_found')], 404);
+        }
+
         return parent::render($request, $exception);
     }
 }

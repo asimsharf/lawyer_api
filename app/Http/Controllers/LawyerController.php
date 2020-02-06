@@ -16,7 +16,7 @@ class LawyerController extends Controller
      */
     public function index()
     {
-        return LawyerCollection::collection(Lawyer::paginate(10));
+        return LawyerCollection::collection(Lawyer::orderBy('id', 'desc')->paginate(10));
     }
 
     /**
@@ -37,6 +37,8 @@ class LawyerController extends Controller
      */
     public function store(Request $request)
     {
+
+        return [$request->name ,$request->profile_image , $request->background_imge];
         try{
             $doc= new Document();
             $doc->document_path=$request->document_path;
@@ -51,10 +53,10 @@ class LawyerController extends Controller
             $law->remember_token = $request->remember_token;
             $law->office_name = $request->office_name;
             $law->gender = $request->gender;
-            $law->profile_image = $request->profile_image;
-            $law->background_imge = $request->background_imge;
-            // $law->addMedia($request->file('profile_image'))->toMediaCollection('LawyerCollection');
-            // $law->addMedia($request->file('background_imge'))->toMediaCollection('LawyerCollection');
+            // $law->profile_image = $request->profile_image;
+            // $law->background_imge = $request->background_imge;
+            $law->addMedia($request->profile_image)->toMediaCollection();
+            $law->addMedia($request->background_imge)->toMediaCollection();
             $law->address_text = $request->address_text;
             $law->latitude = $request->latitude;
             $law->longitude = $request->longitude;
