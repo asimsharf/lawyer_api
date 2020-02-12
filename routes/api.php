@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::group(['prefix' => 'v1'], function () {
+    Route::post('/login', 'UsersController@login');
+    Route::post('/register', 'UsersController@register');
+    Route::get('/logout', 'UsersController@logout')->middleware('auth:api');
+});
+
+
 Route::apiResource('/counteries', 'CounteryController');
 Route::group(['prefix'=>'counteries'], function(){
     Route::apiResource('/{countery}/cities', 'CityController');
